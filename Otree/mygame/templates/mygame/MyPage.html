@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Interviewer {{id}}
+{% endblock %}
+
+{% block content %}
+    Enter the name of the candidate {{subsession.round_number}} : {% formfield player.name %}
+
+    Enter the points you want to give to <b>candidate {{subsession.round_number}}</b>
+    <p></p>
+    {% formfield player.pts with label="Enter the points" %}
+
+   
+
+    {% next_button %}
+
+{% endblock %}

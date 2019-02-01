@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+{% load otree %}
+
+{% block title %}
+    Candidates info
+{% endblock %}
+
+{% block content %}
+
+    {% formfield player.number with label="Number of Candidates" %}
+
+    {% next_button %}
+
+{% endblock %}

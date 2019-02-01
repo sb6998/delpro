@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Interviewer {{id}}
+{% endblock %}
+
+{% block content %}
+	<p>Candidate {{player.name}} average points <b style="color:Red;">{{list2}}</b></p>
+    {{group.set_payoffs}}
+    <table class="table">
+        <tr>
+            <th>Candidate Name</th>
+            <th>Points given by Interviewer {{id}}</th>
+            <th>Average Points of the candidate</th>
+        </tr>
+        {% for p in player.in_all_rounds %}
+            <tr>
+                <td>{{ p.name }}</td>
+                <td>
+                    {{p.pts}}
+                </td>
+                <td>
+                    {% with rno=p.round_number %}   
+                        {% for x in list %}
+                            {% if forloop.counter == rno %}
+                                {{x}}
+                            {% endif %}
+                        {% endfor %}
+                    {% endwith %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% next_button %} 
+{% endblock %}
+
+

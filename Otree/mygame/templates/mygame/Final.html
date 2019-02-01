@@ -1,0 +1,48 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Interviewer {{id}}
+{% endblock %}
+
+{% block content %}
+	<table class="table">
+        <center><tr>
+            <th>Candidate Name</th>
+            {% for x in range %}
+            <th>Score by Interviewer {{x}}</th>
+            {% endfor %}
+            <th>Aggregate Score</th>
+        </tr></center>
+        {% for p in player_in_all_rounds %}
+            <tr>
+                <td>{{ p.name }}</td>
+                    {% with rno=p.round_number %}   
+                        {% for x in points2 %}
+                            {% if forloop.counter == rno %}
+                                {% for z in x %}
+                                    <center><td>{{z}}</td></center>
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endwith %}
+
+                <td>{% with rno=p.round_number %}   
+                    {% for x in list %}
+                        {% if forloop.counter == rno %}
+                            {{x}}
+                        {% endif %}
+                    {% endfor %}
+                {% endwith %}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <!-- <p>
+        Your total points is therefore {{ pts }}  {%if pts > 100 %} and Congratulations You are  <B>SELECTED</b> {%else %} and you are not not selected {%endif %}
+    </p> -->
+
+    {% next_button %}
+{% endblock %}
+
+
