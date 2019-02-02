@@ -13,7 +13,7 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-        'name': 'mygame',
+        'name': 'Delphi_Process',
         'num_demo_participants': 3,
         'app_sequence': ['mygame'],
     },
