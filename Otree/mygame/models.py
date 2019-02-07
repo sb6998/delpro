@@ -35,6 +35,11 @@ class Group(BaseGroup):
         for p in players:
             rnum=p.round_number
             break
+        if rnum == 1 #and data != '1':
+            with open('mygame/mygame.csv','w') as f:
+                writer_csv=csv.writer(f)
+                writer_csv.writerow(str(rnum)+str(average))
+        
         with open('mygame/mygame.csv','r') as f:
             reader=csv.reader(f)
             data = [r for r in reader]
@@ -42,10 +47,6 @@ class Group(BaseGroup):
                 data=[[0]]
             else:
                 data=data[-1][0]
-        if rnum == 1 and data != '1':
-            with open('mygame/mygame.csv','w+') as f:
-                writer_csv=csv.writer(f)
-                writer_csv.writerow(str(rnum)+str(average))
         for x in range(2,51):
             if rnum == x and data != str(x):
                 with open('mygame/mygame.csv','a') as f:
@@ -72,15 +73,6 @@ class Group(BaseGroup):
                         z = name2 + pts
                         writer_csv = csv.writer(f)
                         writer_csv.writerow(z)
-
-        # with open('mygame/game_data.csv','r') as f:
-        #     reader=csv.reader(f)
-        #     data = [r for r in reader]
-        #     if data == []:
-        #         data=[[0]]
-        #     else:
-        #         data=data[-1][0]
-                
         return ""
     def table_avg_data(self):
         with open('mygame/mygame.csv', 'r') as f:
