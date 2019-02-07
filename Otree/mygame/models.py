@@ -42,7 +42,7 @@ class Group(BaseGroup):
                 data=[[0]]
             else:
                 data=data[-1][0]
-        if rnum == 1 and data != '1':
+        if rnum == 1:
             with open('mygame/mygame.csv','w+') as f:
                 writer_csv=csv.writer(f)
                 writer_csv.writerow(str(rnum)+str(average))
